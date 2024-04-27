@@ -5,8 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weblog Homepage</title>
     <link rel="stylesheet" href="statics/styles.css">
+    <script src="statics/functions.js"></script>
 </head>
 <body>
+    <?php
+
+    $is_loggedIn = $_COOKIE["is_loggedIn"];
+    $username = $_COOKIE["username"];
+    if ( $is_loggedIn == "true" && !is_null($username) ){
+        
+    
+    ?>
     <header>
         <h1>Welcome to Our Weblog</h1>
     </header>
@@ -15,6 +24,7 @@
         <a href="#">Write</a>
         <a href="#">Post</a>
         <a href="#">Setting</a>
+        <a href="#" onclick="deleteAllCookies();redirectWithMessage('/login.php', 1000, 'Hope to See You Again');">Logout</a>
     </nav>
     <div class="container">
         <div class="post">
@@ -30,5 +40,16 @@
             <p>This is the content of the third blog post. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.</p>
         </div>
     </div>
+    <?php 
+    }
+    else {
+    ?>
+    <script> redirectWithMessage("/login.php", 3000, "Redirecting to The login page") </script>
+    <?php } ?>
+    
+
 </body>
 </html>
+<footer>
+        <p>&copy; 2024 Your Website Name. All rights reserved.</p>
+</footer>
