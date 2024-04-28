@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     else {
         // Other request method (GET, PUT, DELETE, etc.)
-        $errMSG = "Username Or Password is Wrong";
+        $MSG = "Username Or Password is Wrong";
     }
 } 
 ?>
@@ -37,14 +37,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
             <input type="submit" value="Login">
+            <a style="display: block; text-align: center; font-weight: bold; margin-top: 20px;" href="register.php">Not registered Yet ?</a>
         </form>
 </div>
 </body>
 </html>
 <?php 
-if ( !is_null($errMSG))
+if (isset($_GET['msg'])){
+    $MSG = $_GET['msg'];
+}
+if ( isset($MSG))
 {
-    echo "<p style='text-align: center; font-weight: bold;'>$errMSG</p>";
+    echo "<p style='text-align: center; font-weight: bold;'>$MSG</p>";
 }
 ?>
 <footer>
