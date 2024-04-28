@@ -8,17 +8,21 @@
 </head>
 <body>
 <?php
+include 'db.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // POST request is made
     $user_user = $_POST['username'];
     $user_pass = $_POST['password'];
 
-    $suername = "Salar";
-    $password = "P@ssw0rd";
+    $query = "SELECT * FROM users WHERE username = '$user_user' AND password = '$user_pass'";
+    $result = mysqli_query($conn, $query);
 
-    if ( $user_user == $suername && $password == $user_pass ){
+
+    if ( $result && mysqli_num_rows($result) == 1) { 
+        $row = mysqli_fetch_assoc($result);
         setcookie("is_loggedIn", "true", time() + 3600, "/");
-        setcookie("username", "Salar", time() + 3600, "/");
+        setcookie("username", $row['username'], time() + 3600, "/");
+        setcookie("user_id", $row['user_id'], time() + 3600, "/");
         header("Location: user_panel.php");
     }
     else {

@@ -11,8 +11,8 @@
     <?php
 
     $is_loggedIn = $_COOKIE["is_loggedIn"];
-    $username = $_COOKIE["username"];
-    if ( $is_loggedIn == "true" && !is_null($username) ){
+    $user_id = $_COOKIE["user_id"];
+    if ( $is_loggedIn == "true" && !is_null($user_id) ){
         
     
     ?>
@@ -24,7 +24,7 @@
         <a href="#">Write</a>
         <a href="#">Post</a>
         <a href="#">Setting</a>
-        <a href="#" onclick="deleteAllCookies();redirectWithMessage('/login.php', 1000, 'Hope to See You Again');">Logout</a>
+        <a href="#" onclick="deleteAllCookies();redirectWithMessage('/login.php', 1000, 'Hope to See You Again');">(<?php echo $_COOKIE['username']?>) Logout</a>
     </nav>
     <div class="container">
         <div class="post">
