@@ -6,6 +6,8 @@
     <title>Weblog Homepage</title>
     <link rel="stylesheet" href="statics/styles.css">
     <script src="statics/functions.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="statics/upload.js"></script>
 </head>
 <body>
     <?php
@@ -62,6 +64,17 @@
     </nav>
     <div class="container">
     <h2>User Settings</h2>
+
+    <div class="container">
+    <h2>Upload Picture</h2>
+    <img src='statics/images/<?php echo md5($_SESSION['username']) . '.png'?>'  width="300" height="200"></img>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="file" id="fileInput">
+        <button type="submit">Upload</button>
+    </form>
+    <div id="uploadStatus"></div>
+    </div>
+
     <form action="setting.php" method="post">
         <div class="form-group">
             <label for="username">Username:</label>
