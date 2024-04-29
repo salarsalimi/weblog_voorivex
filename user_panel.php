@@ -9,12 +9,10 @@
 </head>
 <body>
     <?php
-
-    $is_loggedIn = $_COOKIE["is_loggedIn"];
-    $user_id = $_COOKIE["user_id"];
-    if ( $is_loggedIn == "true" && !is_null($user_id) ){
+    session_start();
+    $is_loggedIn = $_SESSION["is_loggedIn"];
+    if ( $is_loggedIn === true ){
         
-    
     ?>
     <header>
         <h1>Welcome to Our Weblog</h1>
@@ -24,7 +22,7 @@
         <a href="#">Write</a>
         <a href="#">Post</a>
         <a href="#">Setting</a>
-        <a href="#" onclick="deleteAllCookies();redirectWithMessage('/login.php', 1000, 'Hope to See You Again');">(<?php echo $_COOKIE['username']?>) Logout</a>
+        <a href="#" onclick="deleteAllCookies();redirectWithMessage('/login.php', 1000, 'Hope to See You Again');">(<?php echo $_SESSION['username']?>) Logout</a>
     </nav>
     <div class="container">
         <div class="post">

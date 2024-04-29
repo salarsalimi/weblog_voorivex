@@ -8,6 +8,7 @@
 </head>
 <body>
 <?php
+session_start();
 include 'db.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // POST request is made
@@ -20,9 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ( $result && mysqli_num_rows($result) == 1) { 
         $row = mysqli_fetch_assoc($result);
-        setcookie("is_loggedIn", "true", time() + 3600, "/");
-        setcookie("username", $row['username'], time() + 3600, "/");
-        setcookie("user_id", $row['user_id'], time() + 3600, "/");
+        $_SESSION['is_loggedIn'] = true;
+        $_SESSION['username'] = $row['username'];
+        $_SESSION['user_id'] = $row['user_id'];
+        // setcookie("is_loggedIn", "true", time() + 3600, "/");
+        // setcookie("username", $row['username'], time() + 3600, "/");
+        // setcookie("user_id", $row['user_id'], time() + 3600, "/");
         header("Location: user_panel.php");
     }
     else {
