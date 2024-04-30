@@ -57,8 +57,8 @@
     </header>
     <nav>
         <a href="#">Panel</a>
-        <a href="#">Write</a>
-        <a href="#">Post</a>
+        <a href="write_posts.php">Write</a>
+        <a href="my_posts.php">Post</a>
         <a href="setting.php">Setting</a>
         <a href="#" onclick="deleteAllCookies();redirectWithMessage('/login.php', 1000, 'Hope to See You Again');">(<?php echo $_SESSION['username']?>) Logout</a>
     </nav>

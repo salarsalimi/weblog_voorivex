@@ -107,3 +107,19 @@ footer {
 .form-group input[type="submit"]:hover {
     background-color: #45a049;
 }
+#dropdown {
+    padding: 10px; /* Add padding for better spacing */
+    font-size: 16px; /* Set font size */
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 5px; /* Add border radius */
+    background-color: #fff; /* Set background color */
+    width: 200px; /* Set width */
+}
+
+/* Style for the options within the select element */
+#dropdown option {
+    padding: 10px; /* Add padding for better spacing */
+    font-size: 16px; /* Set font size */
+    background-color: #fff; /* Set background color */
+    color: #000; /* Set text color */
+}
