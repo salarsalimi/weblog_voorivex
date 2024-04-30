@@ -13,10 +13,10 @@
     <?php
     session_start();
     include 'db.php';
-    $is_loggedIn = $_SESSION["is_loggedIn"];
-    if ( $is_loggedIn === true ){
-        $user_id = $_SESSION['user_id'];
-        $query = "SELECT * FROM posts where author_id = '$user_id'";
+    include 'functions.php';
+
+    
+        $query = "SELECT * FROM posts ";
         $result = mysqli_query($conn, $query);
         $rows = array(); // Initialize an empty array to store the rows
 
@@ -74,17 +74,10 @@
     <div class="container">
         <?php 
             foreach ( $rows as $r ){
-                echo "<p> - " . $r['title'] . " - Publish in: " . $r['publication_date'] . "   | <a href=/view_post.php?post_id=" . $r['post_id'] . " >view</a>" . "   | <a href=/edit_post.php?post_id=" . $r['post_id'] . " >edit</a>" .  "   | <a href=/delete_post.php?post_id=" . $r['post_id'] . " >delete</a>" . "</p>";
+                echo "<p> - " . $r['title'] . " - Publish in: " . $r['publication_date'] . "   In [ <a href=/view_post.php?category_id=" . $r['author_id'] . ">" . getCategorybyId($r['category_id']) . "  </a>  ] " . "   by  <a href=/view_post.php?author_id=" . $r['author_id'] . ">" . getUserbyId($r['author_id']) . " </a> </p>";
             }
         ?>
-    </div>
-    <?php 
-    }
-    else {
-    ?>
-    <script> redirectWithMessage("/login.php", 3000, "Redirecting to The login page") </script>
-    <?php } ?>
-    
+    </div>    
 
 </body>
 </html>
